@@ -9,24 +9,26 @@ var prettyHrtime = require('pretty-hrtime');
  
 var start = process.hrtime();
 
-
-
+let step = 5000;
+console.log("Allocating for :",step," step order book" );
 
 var map = new MultiMap(true);
-for (let index = 0; index < 500000; index++) {
+for (let index = 0; index < step; index++) {
     map.insert(index, index+"1");
 }
 var end = process.hrtime(start);
 console.log(prettyHrtime(end));
-console.log("inserted");
+console.log("Allocating finished");
 
+console.log("Inserting ",step, " into order book");
 var start = process.hrtime();
-var map = new MultiMap(true);
-for (let index = 0; index < 500000; index++) {
+for (let index = 0; index < step; index++) {
     map.insert(index, index+"2");
 }
 var end = process.hrtime(start);
 console.log(prettyHrtime(end));
+
+console.log("Inserting finished");
 //map.print();
 console.log("---");
 
