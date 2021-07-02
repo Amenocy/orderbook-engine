@@ -20,6 +20,9 @@
   "dependencies": {
     "collections": "^5.0.6",
     "lodash": "^4.17.4",
-    "sort-object": "^3.0.2"
+    "node-microbenchmark": "^0.1.0",
+    "pretty-hrtime": "^1.0.3",
+    "sort-object": "^3.0.2",
+    "tmer": "^1.4.7"
   }
 }

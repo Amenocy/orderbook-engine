@@ -1,26 +1,43 @@
 /**
  * Created by landoyjx on 2017/2/8.
  */
-var MultiMap = require('../lib/multimap');
+const { uniqueId } = require("lodash");
+ 
+var MultiMap = require("../lib/multimap");
+var prettyHrtime = require('pretty-hrtime');
+ 
+ 
+var start = process.hrtime();
+
+
+
+
 var map = new MultiMap(true);
+for (let index = 0; index < 500000; index++) {
+    map.insert(index, index+"1");
+}
+var end = process.hrtime(start);
+console.log(prettyHrtime(end));
+console.log("inserted");
 
-map.insert(10, 'a');
-map.insert(12, 'b');
-map.insert(10, 'c');
-map.insert(20, 'd');
-map.insert(15, 'e');
-map.insert(2, 'f');
-map.insert(0, 'g');
-
-map.print();
-console.log('---');
+var start = process.hrtime();
+var map = new MultiMap(true);
+for (let index = 0; index < 500000; index++) {
+    map.insert(index, index+"2");
+}
+var end = process.hrtime(start);
+console.log(prettyHrtime(end));
+//map.print();
+console.log("---");
 
 var it = map.find(12);
 map.erase(it);
-map.print();
+//map.print();
 
-console.log('---');
+console.log("---");
 var it = map.find(10);
 map.erase(it);
-map.print();
+//map.print();
+
+
 
